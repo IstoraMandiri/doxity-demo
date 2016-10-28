@@ -1,0 +1,9 @@
+linkPrefix = "/doxity-demo"
+compiler = "0.4.2+commit.af6afb04.Darwin.appleclang"
+name = "doxity-demo"
+license = "MIT"
+version = "0.0.1"
+description = "Solidity Documentation Generator"
+homepage = "https://github.com/DigixGlobal/doxity#readme"
+author = "Chris Hitchcott"
+buildTime = 2016-10-28T02:06:51.445Z

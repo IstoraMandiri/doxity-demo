@@ -1,0 +1,22 @@
+{
+  "name": "doxity-demo",
+  "version": "0.0.1",
+  "description": "Solidity Documentation Generator",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/DigixGlobal/doxity.git"
+  },
+  "author": "Chris Hitchcott",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DigixGlobal/doxity/issues"
+  },
+  "homepage": "https://github.com/DigixGlobal/doxity#readme"
+}
