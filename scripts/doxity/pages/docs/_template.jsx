@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
-import { Grid, Menu, Segment } from 'semantic-ui-react'
+import { Grid, Menu } from 'semantic-ui-react'
 
 
 export default class Docs extends Component {
@@ -16,9 +16,9 @@ export default class Docs extends Component {
     return (
       <Menu fluid vertical tabular>
         {this.props.route.childRoutes.map((child) => {
-          const isActive = prefixLink(child.path) === this.props.location.pathname
+          const isActive = child.path === this.props.location.pathname
           return (
-            <Menu.Item key={child.path} as={Link} to={prefixLink(child.path)} active={isActive} onClick={this.handleItemClick}>
+            <Menu.Item key={child.path} as={Link} to={child.path} active={isActive} onClick={this.handleItemClick}>
               {child.page.data.name}
             </Menu.Item>
           )

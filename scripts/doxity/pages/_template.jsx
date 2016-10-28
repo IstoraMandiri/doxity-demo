@@ -10,12 +10,12 @@ import ContractDropdown from '../components/contractDropdown'
 
 export default class Index extends Component {
   render() {
-    // const activeItem = prefixLink(child.path) === this.props.location.pathname
+    // console.log("onIndex", this.props.location.pathname, this.props.route)
     const onIndex = prefixLink('/') === this.props.location.pathname
-    const docsRoute = this.props.route.childRoutes.find(route => route.path === '/docs/')
-    const docsPath = docsRoute.childRoutes[0].path
-    // TODO active page
-    // TODO dynamic github link
+    const docsRoute = this.props.route.childRoutes.find(route => route.path === prefixLink('/docs/'))
+    const childRoutes = docsRoute && docsRoute.childRoutes
+    const docsPath = childRoutes && childRoutes[0].path
+
     return (
       <div style={{ paddingTop: '60px' }} className="pusher">
         <Menu inverted fixed="top">
@@ -25,19 +25,20 @@ export default class Index extends Component {
               <Label color="grey">{config.version}</Label>
             </Menu.Item>
             <Menu.Item className="mobile hidden">{config.description}</Menu.Item>
-            <Menu.Menu position="right">
-              {/* TODO render currently selected documentaiton item with dropdown */}
-              {onIndex ?
-                <Menu.Item as={Link} to={prefixLink(docsPath)}>Contracts</Menu.Item>
-              :
-                <ContractDropdown pages={docsRoute.childRoutes} location={this.props.location} />
-              }
-              {config.homepage &&
-                <Menu.Item as={'a'} target="_blank" href={config.homepage}>
-                   <Icon name="home" />
-                </Menu.Item>
-              }
-            </Menu.Menu>
+            {docsPath &&
+              <Menu.Menu position="right">
+                {onIndex ?
+                  <Menu.Item as={Link} to={docsPath}>Contracts</Menu.Item>
+                :
+                  <ContractDropdown pages={childRoutes} location={this.props.location} />
+                }
+                {config.homepage &&
+                  <Menu.Item as={'a'} target="_blank" href={config.homepage}>
+                    <Icon name="home" />
+                  </Menu.Item>
+                }
+              </Menu.Menu>
+            }
           </Container>
         </Menu>
         <Container>

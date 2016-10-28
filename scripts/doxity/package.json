@@ -25,6 +25,6 @@
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
-    "build": "gatsby build"
+    "build": "gatsby build --prefix-links"
   }
 }

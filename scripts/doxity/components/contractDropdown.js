@@ -1,13 +1,18 @@
 import React, { PropTypes, Component } from 'react'
 import { prefixLink } from 'gatsby-helpers'
-import { Menu, Dropdown, Icon } from 'semantic-ui-react'
+import { Menu, Dropdown } from 'semantic-ui-react'
 import { Link } from 'react-router'
 
 export default class ContractDropdown extends Component {
   constructor(props) {
     super(props)
-    this.state = { renderHack: false }
+    this.state = { renderHack: true }
     this.handleClick = this.handleClick.bind(this)
+  }
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ renderHack: false })
+    }, 0)
   }
   handleClick() {
     this.setState({ renderHack: true })
@@ -16,8 +21,9 @@ export default class ContractDropdown extends Component {
     }, 0)
   }
   render() {
+    // return null;
     if (this.state.renderHack) { return null }
-    const selected = this.props.pages.find(page => prefixLink(page.path) === this.props.location.pathname)
+    const selected = (this.props.pages || []).find(page => page.path === this.props.location.pathname)
     return (
       <Dropdown scrolling as={Menu.Item} text={selected.page.data.name}>
         <Dropdown.Menu>
