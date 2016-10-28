@@ -41,7 +41,7 @@ contract MetaCoin {
 
 	/**
 	@notice Returns equivalent Ether balance for a given address
-	@dev Uses the [`ConvertLib.sol`](/docs/ConvertLib/) library to convert
+	@dev Uses the `ConvertLib.sol` library for conversions
 	@param addr Queried address
 	@return { "value" : "Ether equivalent balance of account" }
 	*/
